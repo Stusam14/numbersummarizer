@@ -3,15 +3,19 @@ package com.numbersummarizer.numbersummarizer.common;
 
 import java.util.Collection;
 
+import org.springframework.stereotype.Component;
+
+import com.numbersummarizer.numbersummarizer.Infrastructure.settings.InputSetting;
 import com.numbersummarizer.numbersummarizer.application.interfaces.NumberRangeSummarizer;
 
+@Component
 public class NumberRange {
     
     private NumberRangeSummarizer nSummarizer;
-    private String input;
+    private InputSetting input;
 
     public Collection<Integer> collect(){
-        return nSummarizer.collect(input);
+        return nSummarizer.collect(input.getSequenceString());
     }
 
     public String summarizeCollection(Collection<Integer> sequenceCollection){
@@ -19,14 +23,14 @@ public class NumberRange {
     }
 
     public String getInput() {
-        return input;
+        return input.getSequenceString();
     }
 
-    public void setInput(String input) {
+    public void setInput(InputSetting input) {
         this.input = input;
     }
 
-    public NumberRange(String input,NumberRangeSummarizer nSummarizer){
+    public NumberRange(InputSetting input,NumberRangeSummarizer nSummarizer){
         this.input = input;
         this.nSummarizer = nSummarizer;
     }
