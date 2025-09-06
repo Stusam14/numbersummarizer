@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
+
 import com.numbersummarizer.numbersummarizer.application.interfaces.NumberRangeSummarizer;
 
+@Component
 public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
 
     @Override
