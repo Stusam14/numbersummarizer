@@ -8,11 +8,17 @@ import org.springframework.stereotype.Component;
 import com.numbersummarizer.numbersummarizer.Infrastructure.settings.InputSetting;
 import com.numbersummarizer.numbersummarizer.application.interfaces.NumberRangeSummarizer;
 
+
 @Component
 public class NumberRange {
     
     private NumberRangeSummarizer nSummarizer;
     private InputSetting input;
+
+     public NumberRange(InputSetting input,NumberRangeSummarizer nSummarizer){
+        this.input = input;
+        this.nSummarizer = nSummarizer;
+    }
 
     public Collection<Integer> collect(){
         return nSummarizer.collect(input.getSequenceString());
@@ -30,10 +36,5 @@ public class NumberRange {
         this.input = input;
     }
 
-    public NumberRange(InputSetting input,NumberRangeSummarizer nSummarizer){
-        this.input = input;
-        this.nSummarizer = nSummarizer;
-    }
-
-
+    // public NumberRange(){}
 }
