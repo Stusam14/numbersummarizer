@@ -2,6 +2,8 @@ package com.numbersummarizer.numbersummarizer.Infrastructure.services;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -24,9 +26,12 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
     @Override
     public String summarizeCollection(Collection<Integer> input) {
 
-        int[] sequence = new int[input.size()];
+        Set<Integer> uniqueNumberSequence = input
+            .stream()
+            .collect(Collectors.toCollection(HashSet::new));
+        int[] sequence = new int[uniqueNumberSequence.size()];
         int i= 0;
-        for(Integer num: input){
+        for(Integer num: uniqueNumberSequence){
             if(i < sequence.length)
             sequence[i++] = num;
         }
@@ -38,20 +43,12 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
         String strBuild = "";
         while(j < sequence.length-1){
             if(sequence[j]+1 != sequence[j+1]){
-                if( j-k != 0){
-                    strBuild+= sequence[k] + "-" + sequence[j] + ",";
-                }else{
-                    strBuild+= sequence[j] + ",";
-                 }
+                 strBuild += j-k != 0? sequence[k] + "-" + sequence[j] + "," : sequence[j] + ",";  
                  k = j+1;      
             }
             j++;
         }
-        if (j-k != 0){
-            strBuild+= sequence[k] + "-" + sequence[j];
-        }else{
-            strBuild+= sequence[j];
-        }
+        strBuild+= j-k !=0?  sequence[k] + "-" + sequence[j] : sequence[j];
 
         return strBuild;
     }
