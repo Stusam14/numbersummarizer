@@ -26,6 +26,7 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
     @Override
     public String summarizeCollection(Collection<Integer> input) {
 
+        if(input.isEmpty()) return "Type in a valid Sequence";
         Set<Integer> uniqueNumberSequence = input
             .stream()
             .collect(Collectors.toCollection(HashSet::new));
@@ -35,22 +36,19 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
             if(i < sequence.length)
             sequence[i++] = num;
         }
-
-        //have them go through a hashset to filter out any duplicates
-        // order them
-        // cover edge case (Extreme and Empty string)
+        Arrays.sort(sequence);
         int j = 0, k = 0;
-        String strBuild = "";
+        String buildSequenceString = "";
         while(j < sequence.length-1){
             if(sequence[j]+1 != sequence[j+1]){
-                 strBuild += j-k != 0? sequence[k] + "-" + sequence[j] + "," : sequence[j] + ",";  
+                 buildSequenceString += j-k != 0? sequence[k] + "-" + sequence[j] + "," : sequence[j] + ",";  
                  k = j+1;      
             }
             j++;
         }
-        strBuild+= j-k !=0?  sequence[k] + "-" + sequence[j] : sequence[j];
+        buildSequenceString+= j-k !=0?  sequence[k] + "-" + sequence[j] : sequence[j];
 
-        return strBuild;
+        return buildSequenceString;
     }
     
 
