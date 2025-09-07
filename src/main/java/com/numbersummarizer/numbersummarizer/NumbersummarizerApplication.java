@@ -18,15 +18,25 @@ public class NumbersummarizerApplication {
 	public static void main(String[] args) {
 		
 		ApplicationContext context = SpringApplication.run(NumbersummarizerApplication.class, args);
+		/*
+		 * The code below runs the default string setup in properties file, you change the string 
+		 * if you want to use your own then run the code again
+		 */
 		NumberRange numberRange = context.getBean(NumberRange.class);
-		InputSetting inputSetting = new InputSetting();
 		Collection<Integer> collected = numberRange.collect();
-		inputSetting.setSequenceString("1,2,2,2,3,3,3,5,5,6,7,10,11,12,13,14,15,16,20,21,22,23");
+
+		/*
+		 * if you want to override the default String settings, you can follow the following
+		 * guide code below then you can run your code ,or remove the already available code 
+		 * and put uour string that you want to sumarise.
+		 */
+		InputSetting inputSetting = new InputSetting();
+		inputSetting.setSequenceString("0,20020,20021,5,70000000,1000001,1000002,1000003,20022,300200,300201,400000,400001,400002,4000000,5000,300,320,321,321,321,13949,1199,1211,1588,1600,150,1700,1700000,15,16,20");
 		numberRange.setInput(inputSetting);
-		Collection<Integer> collection2 = numberRange.collect();
+		Collection<Integer> collected2 = numberRange.collect();
 		log.info("================================================================================================================================================================");
 		log.info("Summarised Range: {}" , numberRange.summarizeCollection(collected));
-		log.info("Summarised Range: {}" , numberRange.summarizeCollection(collection2));
+		log.info("Summarised Range: {}" , numberRange.summarizeCollection(collected2));
 		log.info("================================================================================================================================================================");
 
 
