@@ -1,13 +1,15 @@
 package com.numbersummarizer.numbersummarizer.Infrastructure.settings;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+// import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-@ConfigurationProperties(prefix = "sequence")
+@ConfigurationProperties(prefix = "seq")
 @Component
 public class InputSetting {
     
-    String sequenceString;
+    private String sequenceString;
+
 
     public String getSequenceString() {
         return sequenceString;
@@ -15,6 +17,5 @@ public class InputSetting {
 
     public void setSequenceString(String sequenceString) {
         this.sequenceString = sequenceString;
-    }
-    
+    } 
 }
