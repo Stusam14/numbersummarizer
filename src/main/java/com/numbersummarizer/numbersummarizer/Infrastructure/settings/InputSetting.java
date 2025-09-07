@@ -16,6 +16,6 @@ public class InputSetting {
     }
 
     public void setSequenceString(String sequenceString) {
-        this.sequenceString = sequenceString;
-    } 
+            this.sequenceString = sequenceString;
+    }
 }
