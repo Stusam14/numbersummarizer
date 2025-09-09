@@ -37,7 +37,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
     @Test
-    public void NumberRangeSummarizerWithOneValue(){
+    public void NumberRangeSummarizer_WithOneValue(){
         
 		inputSetting.setSequenceString("1");
 		numberRange.setInput(inputSetting);
@@ -46,7 +46,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
     @Test
-    public void NumberRangeSummarizerWithTwoValues(){
+    public void NumberRangeSummarizer_WithTwoValues(){
         
 		inputSetting.setSequenceString("1,2");
 		numberRange.setInput(inputSetting);
@@ -55,7 +55,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
     @Test
-    public void NumberRangeSummarizerWithRepeatedValues(){
+    public void NumberRangeSummarizer_WithRepeatedValues(){
         
 		inputSetting.setSequenceString("0,0,1,1,2,2,2,3,3,3");
 		numberRange.setInput(inputSetting);
@@ -65,7 +65,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
      @Test
-    public void NumberRangeSummarizerWithUnorderedRepeatedValues(){
+    public void NumberRangeSummarizer_WithUnorderedRepeatedValues(){
         
 		inputSetting.setSequenceString("0,2,2,5,6,6,7,1,1,1,3,3,4,4,4,4,5,3,1");
 		numberRange.setInput(inputSetting);
@@ -75,7 +75,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
     @Test
-    public void NumberRangeSummarizerWithUnorderedRepeatedValuesAndNumberGaps(){
+    public void NumberRangeSummarizer_WithUnorderedRepeatedValuesAndNumberGaps(){
         
 		inputSetting.setSequenceString("0,2,2,5,7,1,1,1,3,3,4,4,4,4,5,3,1,11,12,15,16,15,17,17,15,16,20");
 		numberRange.setInput(inputSetting);
@@ -85,7 +85,7 @@ public class NumberRangeSummarizerImpTests {
     }
 
     @Test
-    public void NumberRangeSummarizerWithUnorderedRepeatedLargeValuesAndNumberGaps(){
+    public void NumberRangeSummarizer_WithUnorderedRepeatedLargeValuesAndNumberGaps(){
         
 		inputSetting.setSequenceString("0,20020,20021,5,70000000,1000001,1000002,1000003,20022,300200,300201,400000,400001,400002,4000000,5000,300,320,321,321,321,13949,1199,1211,1588,1600,150,1700,1700000,15,16,20");
 		numberRange.setInput(inputSetting);
