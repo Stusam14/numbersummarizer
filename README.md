@@ -9,6 +9,7 @@
 ## Features
 - Strict input validation (throws exception for invalid entries)
 - Removes duplicates and sorts numbers
+- requires sl4j for logging
 
 ## Requirements
 - Java 8+
@@ -19,6 +20,8 @@
 1. Clone the repository:
 ```bash
 git clone https://github.com/Stusam14/numbersummarizer.git
+```
+2. use : mvn spring-boot:run
 
 Here is a log for where the output is shown, after the equal sign line the output is shown.
 
