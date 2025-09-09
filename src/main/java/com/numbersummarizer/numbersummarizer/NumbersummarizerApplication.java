@@ -25,6 +25,7 @@ public class NumbersummarizerApplication {
 		NumberRange numberRange = context.getBean(NumberRange.class);
 		Collection<Integer> collected = numberRange.collect();
 
+
 		/*
 		 * if you want to override the default String settings, you can follow the following
 		 * guide code below then you can run your code ,or remove the already available code 

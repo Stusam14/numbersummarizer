@@ -22,8 +22,8 @@ public class NumberRange {
     }
 
     public Collection<Integer> collect(){
-        if(input.getSequenceString().equals(""))
-            return new ArrayList<Integer>();
+        // if(input.getSequenceString().equals("") || input.getSequenceString().matches(".*[^0-9,].*"))
+        //     return new ArrayList<Integer>();
         return nSummarizer.collect(input.getSequenceString());
     }
 
