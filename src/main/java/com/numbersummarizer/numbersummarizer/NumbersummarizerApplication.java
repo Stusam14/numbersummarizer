@@ -33,6 +33,7 @@ public class NumbersummarizerApplication {
 		 */
 		InputSetting inputSetting = new InputSetting();
 		inputSetting.setSequenceString("0,20020,20021,5,70000000,1000001,1000002,1000003,20022,300200,300201,400000,400001,400002,4000000,5000,300,320,321,321,321,13949,1199,1211,1588,1600,150,1700,1700000,15,16,20");
+		// inputSetting.setSequenceString("a,2,4,5,6,7,8,9,0,,3,b,c,d,d");
 		numberRange.setInput(inputSetting);
 		Collection<Integer> collected2 = numberRange.collect();
 		log.info("================================================================================================================================================================");
