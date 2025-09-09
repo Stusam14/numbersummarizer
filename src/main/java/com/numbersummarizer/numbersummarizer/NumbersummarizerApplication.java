@@ -30,9 +30,12 @@ public class NumbersummarizerApplication {
 		 * if you want to override the default String settings, you can follow the following
 		 * guide code below then you can run your code ,or remove the already available code 
 		 * and put uour string that you want to sumarise.
+		 * The code throws a caught exception for invalid string
 		 */
 		InputSetting inputSetting = new InputSetting();
+		//Change the string to any valid string for testing
 		inputSetting.setSequenceString("0,20020,20021,5,70000000,1000001,1000002,1000003,20022,300200,300201,400000,400001,400002,4000000,5000,300,320,321,321,321,13949,1199,1211,1588,1600,150,1700,1700000,15,16,20");
+		// tests string, throws an exception for invalid string
 		// inputSetting.setSequenceString("a,2,4,5,6,7,8,9,0,,3,b,c,d,d");
 		numberRange.setInput(inputSetting);
 		Collection<Integer> collected2 = numberRange.collect();

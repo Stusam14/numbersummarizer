@@ -1,9 +1,9 @@
 package com.numbersummarizer.numbersummarizer.Infrastructure.settings;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-// import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+// Class to configure the input value
 @ConfigurationProperties(prefix = "seq")
 @Component
 public class InputSetting {

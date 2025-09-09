@@ -1,7 +1,7 @@
 package com.numbersummarizer.numbersummarizer.infrastructure.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Collection;
 
@@ -26,16 +26,46 @@ public class NumberRangeSummarizerImpTests {
     NumberRangeSummarizer nSummarizer = new NumberRangeSummarizerImpl();
     NumberRange numberRange = new NumberRange(null, nSummarizer);
 
-     @Test
-    public void NumberRangeSummarizerWithEmptyInputValue(){
+    // Tests empty string input if it catches exception
+    @Test
+    public void NumberRangeSummarizerWith_EmptyValue(){
         
-		inputSetting.setSequenceString("");
-		numberRange.setInput(inputSetting);
-		Collection<Integer> collected = numberRange.collect();
-        assertNotNull(numberRange.summarizeCollection(collected));
-		
+		try {
+            inputSetting.setSequenceString("");
+		    numberRange.setInput(inputSetting);
+                   
+        } catch (Exception e) {
+            assertEquals("input cannot be empty!", e.getMessage());
+            fail("Expected IllegalArgumentException");
+        }	
     }
 
+
+    // Tests null input if it catches exception
+    @Test
+	public void NumberRangeSummarizer_WithNullValue(){
+		
+		try {
+			inputSetting.setSequenceString(null);
+		    numberRange.setInput(inputSetting);
+		} catch (NullPointerException e) {
+			assertEquals("Input cannot be null!", e.getMessage());
+		}
+	}
+
+    // Tests non digit values input if it catches exception
+    @Test
+	void NumberRangeSummarizer_WithNonDigitValues(){
+
+		try {
+			inputSetting.setSequenceString("a,v,d,h,s,r,t,%,&,*,#,");
+		    numberRange.setInput(inputSetting);
+		} catch (NullPointerException e) {
+			assertEquals("Invalid String", e.getMessage());
+		}
+	}
+
+    // Tests with one value input
     @Test
     public void NumberRangeSummarizer_WithOneValue(){
         
@@ -45,6 +75,7 @@ public class NumberRangeSummarizerImpTests {
         assertEquals("1",  numberRange.summarizeCollection(collected));
     }
 
+    // Tests with two values input
     @Test
     public void NumberRangeSummarizer_WithTwoValues(){
         
@@ -54,6 +85,7 @@ public class NumberRangeSummarizerImpTests {
         assertEquals("1-2",  numberRange.summarizeCollection(collected));
     }
 
+    // Tests with Repeated values input
     @Test
     public void NumberRangeSummarizer_WithRepeatedValues(){
         
@@ -64,7 +96,8 @@ public class NumberRangeSummarizerImpTests {
 		
     }
 
-     @Test
+    // Tests with unordered repeated values input
+    @Test
     public void NumberRangeSummarizer_WithUnorderedRepeatedValues(){
         
 		inputSetting.setSequenceString("0,2,2,5,6,6,7,1,1,1,3,3,4,4,4,4,5,3,1");
@@ -74,6 +107,7 @@ public class NumberRangeSummarizerImpTests {
 		
     }
 
+    // Tests with unordered repeated values and number gaps input
     @Test
     public void NumberRangeSummarizer_WithUnorderedRepeatedValuesAndNumberGaps(){
         
@@ -84,6 +118,7 @@ public class NumberRangeSummarizerImpTests {
 		
     }
 
+    // Tests with unordered repeated large values  and number gaps input
     @Test
     public void NumberRangeSummarizer_WithUnorderedRepeatedLargeValuesAndNumberGaps(){
         

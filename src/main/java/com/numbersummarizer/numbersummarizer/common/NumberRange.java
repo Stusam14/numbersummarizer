@@ -1,7 +1,6 @@
 package com.numbersummarizer.numbersummarizer.common;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.stereotype.Component;
@@ -21,12 +20,20 @@ public class NumberRange {
         this.nSummarizer = nSummarizer;
     }
 
+    /*
+     *  returns returns the collected string
+     * @param sequenceCollection
+     * @return Collection
+     */
     public Collection<Integer> collect(){
-        // if(input.getSequenceString().equals("") || input.getSequenceString().matches(".*[^0-9,].*"))
-        //     return new ArrayList<Integer>();
         return nSummarizer.collect(input.getSequenceString());
     }
 
+    /*
+     *  returns the summarised string
+     * @param sequenceCollection
+     * @return String
+     */
     public String summarizeCollection(Collection<Integer> sequenceCollection){
         return nSummarizer.summarizeCollection(sequenceCollection);
     }

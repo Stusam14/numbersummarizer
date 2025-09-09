@@ -1,12 +1,16 @@
+/**
+ * Author: Siyabonga Samuel
+ * Date: September 2025
+ * Description: Number range summarizer implementation
+ */
+
 package com.numbersummarizer.numbersummarizer.Infrastructure.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -16,14 +20,18 @@ import com.numbersummarizer.numbersummarizer.application.interfaces.NumberRangeS
 @Component
 public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
 
+    /*
+     * collect the input
+     * @param input
+     * @return Type Collection
+     */
     @Override
     public Collection<Integer> collect(String input) {
 
         Optional<String> str = Optional.ofNullable(input);
-        String strValue = str.orElseThrow(()-> new NullPointerException("Input cannot be null"));
+        String strValue = str.orElseThrow(()-> new NullPointerException("Input cannot be null!"));
         if(strValue.isEmpty()) throw new IllegalArgumentException("input cannot be empty!");
-        
-            
+         
         return  Arrays
                 .stream(input.split(","))
                 .map(String::trim)
@@ -38,24 +46,22 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
                 .collect(Collectors.toList());
     }
 
+    /*
+     * get the summarized string
+     * @param input (Type Collection)
+     * @return Type String
+     */
     @Override
     public String summarizeCollection(Collection<Integer> input) {
 
-        
-
-        // if(input.isEmpty()) return "Type in a valid Sequence";
+        // Collects the input to the ArrayList and stores it in an int array
         List<Integer> uniqueNumberSequence = input
             .stream()
             .collect(Collectors.toCollection(ArrayList::new));
         int[] sequence = uniqueNumberSequence.stream().mapToInt(Integer::intValue).toArray();
-        // int[] sequence = new int[uniqueNumberSequence.size()];
-        // int i= 0;
-        // for(Integer num: uniqueNumberSequence){
-        //     if(i < sequence.length)
-        //     sequence[i++] = num;
-        // }
-        Arrays.sort(sequence);
         int j = 0, k = 0;
+
+        // creates the range summariser
         String buildSequenceString = "";
         while(j < sequence.length-1){
             if(sequence[j]+1 != sequence[j+1]){
@@ -68,6 +74,4 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
 
         return buildSequenceString;
     }
-    
-
 }
