@@ -13,14 +13,15 @@
 
 ## Requirements
 - Java 8+
-- Maven (for building, if applicable)
-- Spring Boot (if using Spring context)
+- Maven for building
+- Spring Boot 
 
 ## Usage
 1. Clone the repository:
 ```bash
 git clone https://github.com/Stusam14/numbersummarizer.git
 ```
+2. or Download the Zip File
 ```
 2. use : mvn spring-boot:run
 
