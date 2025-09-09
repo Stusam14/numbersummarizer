@@ -22,13 +22,17 @@ public class NumberRangeSummarizerImpl implements NumberRangeSummarizer {
         Optional<String> str = Optional.ofNullable(input);
         String strValue = str.orElseThrow(()-> new NullPointerException("Input cannot be null"));
         if(strValue.isEmpty()) throw new IllegalArgumentException("input cannot be empty!");
-
+        
+            
         return  Arrays
                 .stream(input.split(","))
                 .map(String::trim)
-                .filter(num->num.chars()
-                .allMatch(Character::isDigit))
-                .map(Integer::parseInt)
+                .map(num -> {
+                    try{ 
+                        return Integer.parseInt(num);
+                    }catch(NumberFormatException e){
+                        throw new IllegalArgumentException("Invalid String");
+                    }})
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
