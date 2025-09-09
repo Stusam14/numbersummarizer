@@ -21,6 +21,7 @@
 ```bash
 git clone https://github.com/Stusam14/numbersummarizer.git
 ```
+```
 2. use : mvn spring-boot:run
 
 Here is a log for where the output is shown, after the equal sign line the output is shown.
